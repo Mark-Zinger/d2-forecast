@@ -1,0 +1,29 @@
+{
+  "name": "d2-forecast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "start": "",
+    "type": "git",
+    "url": "git+https://github.com/Mark-Zinger/d2-forecast.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mark-Zinger/d2-forecast/issues"
+  },
+  "homepage": "https://github.com/Mark-Zinger/d2-forecast#readme",
+  "dependencies": {
+    "pg": "^8.5.1",
+    "puppeteer": "^5.5.0",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}

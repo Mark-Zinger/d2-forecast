@@ -1,0 +1,9 @@
+{
+    "watch": ["parsers"],
+    "ignore_watch" : ["node_modules", "result"],
+    "watch_delay": 1000,
+    "autorestart": false,
+    "watch_options": {
+      "followSymlinks": false
+    }
+  }
