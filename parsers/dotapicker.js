@@ -59,6 +59,9 @@ const parseTeams = async (teams) => {
     await page.click('select');
     await page.waitForTimeout(5000);
     console.log('clicked');
+
+
+    
     // await page.click('option');
     
     // const selector = await page.$('select')
