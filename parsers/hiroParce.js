@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
+var shell = require('shelljs');
 
 const pathToSave = path.join(__dirname, '../result/heroes.json');
 let link = 'https://ru.dltv.org/matches/';
 
 const data = JSON.parse(fs.readFileSync(pathToSave, 'utf8'));
 
-
+let needPushToRepo = true;
 
 const parceDltv = async () => {
 
@@ -40,6 +41,7 @@ const parceDltv = async () => {
                     if(!include.length) {
                         data.push(el)
                         console.log('push =>', el.name);
+                        needPushToRepo = true;
                     }
                 })
             } else {
@@ -47,7 +49,17 @@ const parceDltv = async () => {
                 console.log('heroes is not found');
             }
             
-            fs.writeFileSync(pathToSave, JSON.stringify(data,null, '\t'))    
+            fs.writeFileSync(pathToSave, JSON.stringify(data,null, '\t'))
+
+            if(needPushToRepo) {
+                if (shell.exec('git commit -am "add hero"').code !== 0) {
+                    shell.echo('Error: Git commit failed');
+                    shell.exit(1);
+                } else {
+                    shell.exec('git push');
+                }
+            }
+
         } catch (e) {
             console.log('catch');
             console.log(e);
