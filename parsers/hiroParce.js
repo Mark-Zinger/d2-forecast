@@ -13,7 +13,7 @@ let needPushToRepo = true;
 const parceDltv = async () => {
 
     let browser = await puppeteer.launch({
-        headless: true
+        headless: false
     });
 
     const parceMatch = async (matchID) => {
@@ -55,11 +55,11 @@ const parceDltv = async () => {
                 if (shell.exec('git commit -am "AutoCommit:add hero"').code !== 0) {
                     shell.exec('git pull');
                     shell.exec('git push');
-                    shell.exit(0);
+                    
                 } else {
                     shell.exec('git pull');
                     shell.exec('git push');
-                    shell.exit(0);
+                    
                 }
             }
 
