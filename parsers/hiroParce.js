@@ -83,15 +83,9 @@ const parceDltv = async () => {
         } 
         
         if(needPushToRepo) {
-            if (shell.exec('git commit -am "AutoCommit:add hero"').code !== 0) {
-                shell.exec('git pull');
-                shell.exec('git push');
-                
-            } else {
-                shell.exec('git pull');
-                shell.exec('git push');
-                
-            }
+            shell.exec('git commit -am "AutoCommit:add hero"')
+            shell.exec('git pull');
+            shell.exec('git push');
         }
     }
     await parceMatchList();
