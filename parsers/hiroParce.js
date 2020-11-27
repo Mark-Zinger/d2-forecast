@@ -53,10 +53,11 @@ const parceDltv = async () => {
 
             if(needPushToRepo) {
                 if (shell.exec('git commit -am "add hero"').code !== 0) {
-                    shell.echo('Error: Git commit failed');
+                    shell.exec('git pull');
                     shell.exec('git push');
                     shell.exit(1);
                 } else {
+                    shell.exec('git pull');
                     shell.exec('git push');
                     shell.exit(0);
                 }
