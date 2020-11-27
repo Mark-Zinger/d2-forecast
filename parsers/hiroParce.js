@@ -52,10 +52,10 @@ const parceDltv = async () => {
             fs.writeFileSync(pathToSave, JSON.stringify(data,null, '\t'))
 
             if(needPushToRepo) {
-                if (shell.exec('git commit -am "add hero"').code !== 0) {
+                if (shell.exec('git commit -am "AutoCommit:add hero"').code !== 0) {
                     shell.exec('git pull');
                     shell.exec('git push');
-                    shell.exit(1);
+                    shell.exit(0);
                 } else {
                     shell.exec('git pull');
                     shell.exec('git push');
