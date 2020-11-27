@@ -8,12 +8,12 @@ let link = 'https://ru.dltv.org/matches/';
 
 const data = JSON.parse(fs.readFileSync(pathToSave, 'utf8'));
 
-let needPushToRepo = tr;
+let needPushToRepo = true;
 
 const parceDltv = async () => {
 
     let browser = await puppeteer.launch({
-        headless: false
+        headless: true
     });
 
     const parceMatch = async (matchID) => {
