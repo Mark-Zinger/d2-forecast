@@ -8,7 +8,7 @@ let link = 'https://ru.dltv.org/matches/';
 
 const data = JSON.parse(fs.readFileSync(pathToSave, 'utf8'));
 
-let needPushToRepo = true;
+let needPushToRepo = tr;
 
 const parceDltv = async () => {
 
