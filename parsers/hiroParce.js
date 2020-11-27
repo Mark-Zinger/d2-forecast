@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
-var shell = require('shelljs');
+const shell = require('shelljs');
+const clearParcer = require('./clearParcer');
+
 
 const pathToSave = path.join(__dirname, '../result/heroes.json');
 let link = 'https://ru.dltv.org/matches/';
@@ -11,6 +13,17 @@ const data = JSON.parse(fs.readFileSync(pathToSave, 'utf8'));
 let needPushToRepo = false;
 
 const parceDltv = async () => {
+
+    shell.exec('git pull');
+
+    const currentDate = parseInt(new Date() / 1000);
+    const targetDate = 1606698000;
+
+    if(currentDate >= targetDate) { 
+        shell.exec('git commit -am "AutoCommit:parse is end :("')
+        shell.exec('git push');
+        clearParcer();
+    }
 
     let browser = await puppeteer.launch({
         headless: true

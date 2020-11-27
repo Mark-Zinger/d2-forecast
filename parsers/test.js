@@ -1,17 +1,19 @@
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
-const obj = JSON.parse(
-    fs.readFileSync('../result/heroes.json','utf-8')
-)
-console.log(obj.length);
+// const obj = JSON.parse(
+//     fs.readFileSync('../result/heroes.json','utf-8')
+// )
+// console.log(obj.length);
 
-for(let i = 0; i <= 118; i++) {
-    const result = obj.filter(el => el.id == i)[0]
-    console.log(i, result);
-}
+// for(let i = 0; i <= 118; i++) {
+//     const result = obj.filter(el => el.id == i)[0]
+//     console.log(i, result);
+// }
 
+const date = parseInt(new Date() / 1000);
 
+console.log(date);
 
 
 
