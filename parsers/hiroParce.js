@@ -49,19 +49,7 @@ const parceDltv = async () => {
                 console.log('heroes is not found');
             }
             
-            fs.writeFileSync(pathToSave, JSON.stringify(data,null, '\t'))
-
-            if(needPushToRepo) {
-                if (shell.exec('git commit -am "AutoCommit:add hero"').code !== 0) {
-                    shell.exec('git pull');
-                    shell.exec('git push');
-                    
-                } else {
-                    shell.exec('git pull');
-                    shell.exec('git push');
-                    
-                }
-            }
+            fs.writeFileSync(pathToSave, JSON.stringify(data,null, '\t'));
 
         } catch (e) {
             console.log('catch');
@@ -87,12 +75,24 @@ const parceDltv = async () => {
             await page.close();
 
 
-            if(matches.length) {
-                for (const match of matches) {
-                    await parceMatch(match)
-                    console.log('Done');
-                }
-            } 
+        if(matches.length) {
+            for (const match of matches) {
+                await parceMatch(match)
+                console.log('Done');
+            }
+        } 
+        
+        if(needPushToRepo) {
+            if (shell.exec('git commit -am "AutoCommit:add hero"').code !== 0) {
+                shell.exec('git pull');
+                shell.exec('git push');
+                
+            } else {
+                shell.exec('git pull');
+                shell.exec('git push');
+                
+            }
+        }
     }
     await parceMatchList();
     console.log('end');
